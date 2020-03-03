@@ -1,0 +1,9 @@
+
+#spring:
+#  datasource:
+#    data-username: root
+#    data-password: 161
+#    url: jdbc:mysql://localhost:3306/crm?serviceTimezone=UTC&useUnicode=true&characterEncoding=utf-8
+#    driver-class-name: com.mysql.jdbc.Driver
+#    type: com.alibaba.druid.pool.DruidDataSource
+

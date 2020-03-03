@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:shiro="http://www.thymeleaf.org/thymeleaf-extras-shiro"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <h1>首页</h1>
+
+    <!--<div sec:authorize="!isAuthenticated()">
+        <a href="/toLogin">登录</a>
+    </div>
+    <div sec:authorize="isAuthenticated()">
+        用户名：<span sec:authentication="name"></span>
+        &lt;!&ndash;角色：<span sec:authentication="principal.getAuthorities()"></span>&ndash;&gt;
+        <a href="/logout" >注销</a>
+    </div>
+
+
+
+    <div sec:authorize="hasRole('vip1')">
+        <h3>level1</h3>
+        <a href="level1/1">level1-1</a>
+        <a href="level1/2">level1-2</a>
+        <a href="level1/3">level1-3</a>
+    </div>
+    <div sec:authorize="hasRole('vip2')">
+        <h3>level2</h3>
+        <a href="level2/1">level2-1</a>
+        <a href="level2/2">level2-2</a>
+        <a href="level2/3">level2-3</a>
+    </div>
+
+    <div sec:authorize="hasRole('vip3')">
+        <h3>leve3</h3>
+        <a href="level3/1">level3-1</a>
+        <a href="level3/2">level3-2</a>
+        <a href="level3/3">level3-3</a>
+    </div>-->
+    <div th:if="${session.loginUser==null}">
+       <a href="/toLogin">登录</a>
+   </div>
+   <div th:if="${session.loginUser!=null}">
+       用户名：<span th:text="${session.loginUser.getName()}"></span>
+       角色：<span th:text="${session.loginUser.getPerms()}"></span>
+       <a href="/logout" >注销</a>
+   </div>
+
+   <div >
+       <h3>level1</h3>
+       <div shiro:hasPermission="user:update"><a href="level1/1">level1-1</a></div>
+       <div ><a href="level1/2">level1-2</a></div>
+       <div shiro:hasPermission="user:add"><a href="level1/3">level1-3</a></div>
+
+
+   </div>
+   <div >
+       <h3>level2</h3>
+       <a href="level2/1">level2-1</a>
+       <a href="level2/2">level2-2</a>
+       <a href="level2/3">level2-3</a>
+   </div>
+
+   <div >
+       <h3>leve3</h3>
+       <a href="level3/1">level3-1</a>
+       <a href="level3/2">level3-2</a>
+       <a href="level3/3">level3-3</a>
+   </div>
+</body>
+</html>
